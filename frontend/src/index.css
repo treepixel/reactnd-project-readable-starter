@@ -1,14 +1,115 @@
-body {
+* {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+}
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  background: #f8f8f8;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+li {
+  list-style: none;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 100px 100%;
+  grid-template-areas:
+    'top'
+    'content';
+  height: 100%;
+}
+
+.wrapper .header {
+  grid-area: top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('./assets/images/bg-top.jpg') no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+.wrapper .content {
+  padding: 3rem 0;
+  grid-area: content;
+  display: flex;
+  justify-content: center;
+}
+
+.posts-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 1.5rem;
+}
+
+.posts-order-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.posts-categories h3 {
+  margin-bottom: 10px;
+}
+
+.posts-categories li {
+  border: 1px solid #fdbb00;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fdbb00;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.posts-categories .active {
+  background: #fdbb00;
+  color: #fff;
+}
+
+.posts-list-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1.5rem;
+  grid-auto-rows: minmax(350px, auto);
+}
+
+.posts-list-items li {
+  position: relative;
+  background: #fff;
+  width: 280px;
+  padding: 1rem;
+}
+
+.posts-list-items li h1 {
+  font-size: 50px;
+  line-height: 1.2;
+  color: #a3aaab;
+}
+
+.info-post {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+.info-post span {
+  margin-right: 20px;
+}
+
+@media (min-width: 500px) {
+  .posts-container {
+    grid-template-columns: 1fr 4fr;
+  }
+  .posts-list-items {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

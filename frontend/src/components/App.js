@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import Dashboard from '../components/Dashboard';
+import '../index.css';
 
 class App extends Component {
   componentDidMount() {
