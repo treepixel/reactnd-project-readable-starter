@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { formatDate } from '../utils/helpers';
 import { FaRegClock, FaRegStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 class Post extends Component {
   render() {
     const { post } = this.props;
     return (
       <li>
-        <h1>{post.title}</h1>
+        <Link to={`/posts/${post.id}`}>
+          <h1>{post.title}</h1>
+        </Link>
         <div className="info-post">
           <span>
             <FaRegClock color="#FDBA00" />

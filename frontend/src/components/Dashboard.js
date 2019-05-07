@@ -47,8 +47,8 @@ class Dashboard extends Component {
 
 function mapStateToProps({ categories, posts }) {
   return {
-    categories: Object.keys(categories).map(cat => categories[cat]),
-    posts: Object.keys(posts).map(post => posts[post])
+    categories,
+    posts
   };
 }
 

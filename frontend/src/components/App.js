@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import Dashboard from '../components/Dashboard';
+import PostPage from '../components/PostPage';
 import '../index.css';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
             <div>
               <Switch>
                 <Route exact path="/" render={() => <Dashboard />} />
+                <Route path="/posts/:id" component={PostPage} />
                 <Route render={() => <Redirect to="/" />} />
               </Switch>
             </div>
