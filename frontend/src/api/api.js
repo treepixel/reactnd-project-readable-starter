@@ -33,6 +33,17 @@ function getPosts() {
   });
 }
 
+export function getPostsByCategory(category) {
+  return new Promise((res, rej) => {
+    fetch(`${api}/${category}/posts`, {
+      headers: headers
+    })
+      .then(response => response.json())
+      .then(res)
+      .then(rej);
+  });
+}
+
 export function getCommentsByPost(id) {
   return new Promise((res, rej) => {
     fetch(`${api}/posts/${id}/comments`, { headers })
