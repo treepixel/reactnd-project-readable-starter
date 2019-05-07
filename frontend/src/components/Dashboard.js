@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Categories from './Categories';
 import PostList from './PostList';
 
 class Dashboard extends Component {
@@ -12,15 +13,7 @@ class Dashboard extends Component {
         </div>
         <div className="content">
           <div className="posts-container">
-            <div className="posts-categories">
-              <h3>Categories</h3>
-              <ul>
-                <li className="active">All</li>
-                {categories.map(cat => (
-                  <li key={cat.name}>{cat.name}</li>
-                ))}
-              </ul>
-            </div>
+            <Categories categories={categories} />
             <PostList posts={posts} />
           </div>
         </div>
