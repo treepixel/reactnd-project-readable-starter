@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
-import Dashboard from '../components/Dashboard';
-import PostPage from '../components/PostPage';
+import Post from './Post';
+import Posts from './Posts';
 import '../index.css';
 
 class App extends Component {
@@ -19,8 +19,9 @@ class App extends Component {
           {this.props.loading === true ? null : (
             <div>
               <Switch>
-                <Route exact path="/" render={() => <Dashboard />} />
-                <Route path="/posts/:id" component={PostPage} />
+                <Route exact path="/" component={Posts} />
+                <Route exact path="/category/:category" component={Posts} />
+                <Route path="/posts/:id" component={Post} />
                 <Route render={() => <Redirect to="/" />} />
               </Switch>
             </div>

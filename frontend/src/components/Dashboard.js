@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Categories from './Categories';
 import PostList from './PostList';
+import { handleInitialData } from '../actions/shared';
 
 class Dashboard extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    const { posts } = this.props.match.params;
+    if (posts !== prevProps.match.params.posts) {
+      this.props.dispatch(handleInitialData());
+    }
+  }
   render() {
     const { categories, posts } = this.props;
     return (
