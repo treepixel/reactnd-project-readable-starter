@@ -5,6 +5,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import Post from './Post';
 import Posts from './Posts';
+import NotFound from './NotFound';
 import '../index.css';
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
                 <Route exact path="/" component={Posts} />
                 <Route exact path="/category/:category" component={Posts} />
                 <Route path="/posts/:id" component={Post} />
+                <Route path="/404" component={NotFound} />
                 <Route render={() => <Redirect to="/" />} />
               </Switch>
             </div>

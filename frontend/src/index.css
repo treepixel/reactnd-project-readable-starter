@@ -176,6 +176,41 @@ li {
   border-bottom: 1px solid #e5e2d8;
 }
 
+.not-found h1 {
+  text-align: center;
+  border-bottom: 0;
+  font-size: 155px;
+  color: #e4e0e0;
+}
+
+.not-found h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #fdbe01;
+}
+
+.not-found p {
+  padding: 15px;
+}
+
+.not-found .box-button {
+  text-align: center;
+}
+
+.not-found a {
+  text-align: center;
+  background: #eccd65;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.not-found a:hover {
+  background: #fdbb00;
+}
+
 .box-detail-post .info-post {
   position: relative;
   padding: 10px 0 25px;
