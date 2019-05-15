@@ -14,7 +14,7 @@ class Categories extends Component {
             </li>
           </Link>
           {categories.items.map(cat => (
-            <Link to={`/category/${cat.path}`} key={cat.name}>
+            <Link to={`/${cat.path}`} key={cat.name}>
               <li
                 key={cat.name}
                 className={currentCategory === cat.name ? 'active' : ''}

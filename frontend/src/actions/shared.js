@@ -1,6 +1,6 @@
 import { getInitialData } from '../api/api';
 import { receiveCategories } from './categories';
-import { receivePosts } from './posts';
+import { receivePosts, updatePostCountComments } from './posts';
 import { setAuthedUser } from './authedUser';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
@@ -16,4 +16,8 @@ export function handleInitialData() {
       dispatch(hideLoading());
     });
   };
+}
+
+export function handleUpdatePostCountComments(id, value) {
+  return dispatch => dispatch(updatePostCountComments(id, value));
 }

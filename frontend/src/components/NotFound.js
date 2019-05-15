@@ -1,12 +1,11 @@
 import React from 'react';
+import Header from './Header';
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
   return (
     <div className="wrapper">
-      <div className="header">
-        <h1>ReadABLE</h1>
-      </div>
+      <Header />
       <div className="content">
         <div className="posts-container-detail">
           <div className="box-detail-post not-found">

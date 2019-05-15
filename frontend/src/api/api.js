@@ -44,6 +44,54 @@ export function getPostsByCategory(category) {
   });
 }
 
+export function savePost(data) {
+  return new Promise((res, rej) => {
+    fetch(`${api}/posts`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(res)
+      .then(rej);
+  });
+}
+
+export function updatePost(id, data) {
+  return new Promise((res, rej) => {
+    fetch(`${api}/posts/${id}`, {
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(res)
+      .then(rej);
+  });
+}
+
+export function votePostAPI(id, data) {
+  return new Promise((res, rej) => {
+    fetch(`${api}/posts/${id}`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    });
+  });
+}
+
+export function deletePost(id) {
+  return new Promise((res, rej) => {
+    fetch(`${api}/posts/${id}`, {
+      method: 'DELETE',
+      headers: headers
+    })
+      .then(response => response.json())
+      .then(res)
+      .then(rej);
+  });
+}
+
 export function getCommentsByPost(id) {
   return new Promise((res, rej) => {
     fetch(`${api}/posts/${id}/comments`, { headers })
@@ -63,6 +111,29 @@ export function saveComment(data) {
       .then(response => response.json())
       .then(res)
       .then(rej);
+  });
+}
+
+export function updateCommentAPI(id, data) {
+  return new Promise((res, rej) => {
+    fetch(`${api}/comments/${id}`, {
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(res)
+      .then(rej);
+  });
+}
+
+export function voteCommentAPI(id, data) {
+  return new Promise((res, rej) => {
+    fetch(`${api}/comments/${id}`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    });
   });
 }
 

@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { handleDeletePost } from '../actions/posts';
 import { withRouter, Redirect } from 'react-router-dom';
 import { formatDate } from '../utils/helpers';
+import { handleVotePost } from '../actions/posts';
 import Comments from './Comments';
-import { FaRegClock, FaRegStar, FaEdit, FaTimes } from 'react-icons/fa';
+import Header from './Header';
+import {
+  FaRegClock,
+  FaRegStar,
+  FaEdit,
+  FaTimes,
+  FaRegCommentAlt
+} from 'react-icons/fa';
 
 class Post extends Component {
+  handleDelete = (e, id) => {
+    e.preventDefault();
+    this.props.dispatch(handleDeletePost(id));
+    this.props.history.push('/');
+  };
+
+  handleBtVote = (id, event) => {
+    event.preventDefault();
+    const data = { option: event.target.name };
+    this.props.dispatch(handleVotePost(id, data));
+  };
+
   render() {
-    const { post } = this.props;
+    const { post, history } = this.props;
 
     if (post === undefined) {
       return <Redirect to="/404" />;
@@ -15,17 +36,15 @@ class Post extends Component {
 
     return (
       <div className="wrapper">
-        <div className="header">
-          <h1>ReadABLE</h1>
-        </div>
+        <Header backTo="/" />
         <div className="content">
           <div className="posts-container-detail">
             <div className="box-detail-post">
               <div className="box-control-post">
-                <button>
+                <button onClick={() => history.push(`/posts/edit/${post.id}`)}>
                   <FaEdit />
                 </button>
-                <button>
+                <button onClick={e => this.handleDelete(e, post.id)}>
                   <FaTimes />
                 </button>
               </div>
@@ -36,8 +55,28 @@ class Post extends Component {
                   {' ' + formatDate(post.timestamp)}
                 </span>
                 <span>
+                  <FaRegCommentAlt color="#FDBA00" />
+                  {' ' + post.commentCount + ' '}
+                </span>
+                <span>
                   <FaRegStar color="#FDBA00" />
-                  {' ' + post.voteScore}
+                  {' ' + post.voteScore + ' '}
+                </span>
+                <span className="controlVote">
+                  <button
+                    name="downVote"
+                    onClick={event => this.handleBtVote(post.id, event)}
+                    className="bt-vote bt-vote-left"
+                  >
+                    -
+                  </button>
+                  <button
+                    name="upVote"
+                    onClick={event => this.handleBtVote(post.id, event)}
+                    className="bt-vote bt-vote-right"
+                  >
+                    +
+                  </button>
                 </span>
               </div>
               {post.body}

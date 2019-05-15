@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddComment } from '../actions/comments';
+import { handleUpdatePostCountComments } from '../actions/shared';
 import { generateUID } from '../utils/helpers';
 import { FaRegCommentAlt } from 'react-icons/fa';
 
@@ -31,6 +32,7 @@ class FormComment extends Component {
     };
 
     this.props.dispatch(handleAddComment(comment));
+    this.props.dispatch(handleUpdatePostCountComments(comment.parentId, 1));
 
     this.clearForm();
   };

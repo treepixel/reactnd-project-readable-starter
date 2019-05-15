@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { FaPlus } from 'react-icons/fa';
 import { receivePostsByCategory } from '../actions/posts';
 import { handleInitialData } from '../actions/shared';
+import Header from './Header';
 import Categories from './Categories';
 import PostList from './PostList';
 
@@ -30,17 +33,20 @@ class Posts extends Component {
     const { categories, posts } = this.props;
     const { category } = this.props.match.params;
     return (
-      <div className="wrapper">
-        <div className="header">
-          <h1>ReadABLE</h1>
-        </div>
-        <div className="content">
-          <div className="posts-container">
-            <Categories categories={categories} currentCategory={category} />
-            <PostList posts={posts} />
+      <Fragment>
+        <div className="wrapper">
+          <Header />
+          <div className="content">
+            <div className="posts-container">
+              <Categories categories={categories} currentCategory={category} />
+              <PostList posts={posts} />
+            </div>
           </div>
         </div>
-      </div>
+        <Link className="btAddPost" to="/posts/new">
+          <FaPlus />
+        </Link>
+      </Fragment>
     );
   }
 }

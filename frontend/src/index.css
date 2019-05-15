@@ -36,8 +36,34 @@ li {
   color: #fff;
 }
 
+.wrapper .header a {
+  position: absolute;
+  left: 10px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.wrapper .header a:hover {
+  background: #fdba00;
+  color: #fff;
+}
+
+.btAddPost {
+  position: fixed;
+  z-index: 9999;
+  bottom: 50px;
+  right: 50px;
+  background: #ffc107;
+  font-size: 26px;
+  border-radius: 100px;
+  padding: 15px 20px;
+  color: #fff;
+  box-shadow: 2px 3px 7px grey;
+}
+
 .wrapper .content {
-  padding: 3rem 0;
+  padding: 3rem 20px;
   grid-area: content;
   display: flex;
   justify-content: center;
@@ -55,6 +81,13 @@ li {
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #fdbb00;
+}
+
+.posts-order-box select {
+  padding: 2px;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  margin-bottom: 0;
 }
 
 .posts-categories h3 {
@@ -104,7 +137,7 @@ li {
 }
 
 .posts-list-items li h1 {
-  font-size: 50px;
+  font-size: 40px;
   line-height: 1.2;
   color: #a3aaab;
 }
@@ -115,10 +148,15 @@ li {
   left: 0;
   width: 100%;
   padding: 20px;
+  font-size: 14px;
 }
 
 .info-post span {
   margin-right: 20px;
+}
+
+.txtEditComment {
+  width: 260px;
 }
 
 @media (min-width: 500px) {
@@ -128,6 +166,9 @@ li {
   .posts-list-items {
     grid-template-columns: 1fr 1fr 1fr;
     min-width: 984px;
+  }
+  .txtEditComment {
+    width: 470px;
   }
 }
 
@@ -162,6 +203,7 @@ li {
 
 .box-detail-post {
   position: relative;
+  min-width: 290px;
   max-width: 480px;
   background: #fff;
   margin-top: 2rem;
@@ -169,7 +211,7 @@ li {
 }
 
 .box-detail-post h1 {
-  font-size: 60px;
+  font-size: 44px;
   line-height: 1;
   padding-bottom: 20px;
   color: #abaaa3;
@@ -222,6 +264,18 @@ li {
   padding: 20px;
 }
 
+.comment-order-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-order-box select {
+  padding: 2px;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  margin-bottom: 0;
+}
+
 .box-detail-comments h3 {
   color: #fdba00;
   margin-bottom: 30px;
@@ -235,6 +289,11 @@ li {
   display: grid;
   grid-template-columns: 42px 1fr;
   grid-gap: 1rem;
+}
+
+.comment-box {
+  background: #fbfbfb;
+  padding: 8px;
 }
 
 .comment-info {
@@ -267,7 +326,8 @@ li {
 }
 
 .formAddNewComment > input,
-textarea {
+textarea,
+select {
   margin-bottom: 15px;
   border: 1px solid #fdba00;
   border-radius: 5px;
@@ -303,4 +363,39 @@ textarea {
 
 .box-control-comment button:hover {
   background: #fdba00;
+}
+
+.mgr-10 {
+  margin-right: 5px !important;
+}
+
+.bt-vote {
+  background: transparent !important;
+  border: 1px solid #fdba00 !important;
+  color: #fdba00 !important;
+  padding: 2px 8px !important;
+  cursor: pointer !important;
+}
+
+.bt-vote:hover {
+  background: #fdba00 !important;
+  color: #fff !important;
+}
+
+.bt-vote-left {
+  border-radius: 5px 0 0 5px !important;
+  padding: 2px 9px !important;
+}
+
+.bt-vote-right {
+  border-radius: 0 5px 5px 0 !important;
+}
+
+.comment-text .controlVote {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.comment-text .controlVote span {
+  margin-right: 15px;
 }
