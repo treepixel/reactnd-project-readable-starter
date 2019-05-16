@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { handleAddPost, handleEditPost } from '../actions/posts';
 import { generateUID } from '../utils/helpers';
 import Header from './Header';
+import { Wrapper, ContentSection, Container, Box, Form } from '../styles';
 
 class FormPost extends Component {
   state = {
@@ -86,14 +87,14 @@ class FormPost extends Component {
     const { categories, post } = this.props;
 
     return (
-      <div className="wrapper">
+      <Wrapper>
         <Header backTo={post ? `/posts/${post.id}` : '/'} />
-        <div className="content">
-          <div className="posts-container-detail">
-            <div className="box-detail-post">
+        <ContentSection>
+          <Container detail>
+            <Box>
               <h3>{post ? 'Edit' : 'New'} Post</h3>
 
-              <form className="formAddNewComment" onSubmit={this.handleSubmit}>
+              <Form onSubmit={this.handleSubmit}>
                 <label>Title:</label>
                 <input
                   name="title"
@@ -151,11 +152,11 @@ class FormPost extends Component {
                     {post ? 'Update' : 'Create'}
                   </button>
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+              </Form>
+            </Box>
+          </Container>
+        </ContentSection>
+      </Wrapper>
     );
   }
 }

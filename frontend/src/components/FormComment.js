@@ -4,6 +4,7 @@ import { handleAddComment } from '../actions/comments';
 import { handleUpdatePostCountComments } from '../actions/shared';
 import { generateUID } from '../utils/helpers';
 import { FaRegCommentAlt } from 'react-icons/fa';
+import { AddComment, Form } from '../styles';
 
 class FormComment extends Component {
   state = {
@@ -47,11 +48,11 @@ class FormComment extends Component {
   render() {
     const { author, comment } = this.state;
     return (
-      <div>
+      <AddComment>
         <h3>
           <FaRegCommentAlt /> New Comment
         </h3>
-        <form className="formAddNewComment" onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <input
             name="author"
             type="text"
@@ -70,8 +71,8 @@ class FormComment extends Component {
               Add
             </button>
           </div>
-        </form>
-      </div>
+        </Form>
+      </AddComment>
     );
   }
 }

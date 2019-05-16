@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { sortBySelectedMethod } from '../utils/helpers';
 import PostItem from './PostItem';
+import { ListPosts, PostGrid, SelectSort } from '../styles';
 
 class PostList extends Component {
   state = {
@@ -10,43 +12,32 @@ class PostList extends Component {
     this.setState({ sortBy: event.target.value });
   };
 
-  sortBySelectedMethod(posts) {
-    switch (this.state.sortBy) {
-      case 'voteScore':
-        return posts.sort((a, b) => b.voteScore - a.voteScore);
-      case 'date':
-        return posts.sort((a, b) => b.timestamp - a.timestamp);
-      default:
-        return posts;
-    }
-  }
-
   render() {
     const { posts } = this.props;
     const { sortBy } = this.state;
     const sortedPosts =
       posts.items !== undefined && posts.items.length > 1
-        ? this.sortBySelectedMethod(posts.items)
+        ? sortBySelectedMethod(sortBy, posts.items)
         : posts.items;
 
     return (
-      <div className="posts-list">
+      <ListPosts>
         <div className="posts-order-box">
           <h3>Posts</h3>
-          <div>
+          <SelectSort>
             <span>Sort by: </span>
             <select value={sortBy} onChange={this.handleChange}>
               <option value="voteScore">Vote Score</option>
               <option value="date">Date</option>
             </select>
-          </div>
+          </SelectSort>
         </div>
-        <ul className="posts-list-items">
+        <PostGrid>
           {sortedPosts.map(post => (
             <PostItem key={post.id} post={post} />
           ))}
-        </ul>
-      </div>
+        </PostGrid>
+      </ListPosts>
     );
   }
 }

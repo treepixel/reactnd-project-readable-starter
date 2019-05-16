@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { handleEditComment } from '../actions/comments';
+import { Form } from '../styles';
 
 class FormEditComment extends Component {
   state = {
@@ -41,7 +42,7 @@ class FormEditComment extends Component {
         <h3>
           <FaRegCommentAlt /> Edit Comment
         </h3>
-        <form className="formAddNewComment" onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <textarea
             name="comment"
             className="txtEditComment"
@@ -54,7 +55,7 @@ class FormEditComment extends Component {
               Update
             </button>
           </div>
-        </form>
+        </Form>
       </div>
     );
   }

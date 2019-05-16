@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { MenuBox } from '../styles';
 
-class Categories extends Component {
+class MenuCategories extends Component {
   render() {
     const { categories, currentCategory } = this.props;
     return (
-      <div className="posts-categories">
+      <MenuBox>
         <h3>Categories</h3>
         <ul>
           <Link to="/">
@@ -24,9 +25,9 @@ class Categories extends Component {
             </Link>
           ))}
         </ul>
-      </div>
+      </MenuBox>
     );
   }
 }
 
-export default Categories;
+export default MenuCategories;

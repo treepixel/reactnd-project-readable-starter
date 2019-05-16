@@ -13,3 +13,14 @@ export function generateUID() {
       .substring(2, 15)
   );
 }
+
+export function sortBySelectedMethod(sortBy, data) {
+  switch (sortBy) {
+    case 'voteScore':
+      return data.sort((a, b) => b.voteScore - a.voteScore);
+    case 'date':
+      return data.sort((a, b) => b.timestamp - a.timestamp);
+    default:
+      return data;
+  }
+}
