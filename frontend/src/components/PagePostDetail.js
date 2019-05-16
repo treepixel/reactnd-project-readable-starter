@@ -15,13 +15,8 @@ import {
 } from '../styles';
 
 class PagePostDetail extends Component {
-  handleDelete = id => {
-    this.props.dispatch(handleDeletePost(id));
-    this.props.history.push('/');
-  };
-
   render() {
-    const { post, history } = this.props;
+    const { post, history, deletePost } = this.props;
 
     if (post === undefined) {
       return <Redirect to="/404" />;
@@ -38,10 +33,7 @@ class PagePostDetail extends Component {
                   icon="FaEdit"
                   action={() => history.push(`/posts/edit/${post.id}`)}
                 />
-                <ButtonIcon
-                  icon="FaTimes"
-                  action={() => this.handleDelete(post.id)}
-                />
+                <ButtonIcon icon="FaTimes" action={() => deletePost(post.id)} />
               </PostControl>
               <h1>{post.title}</h1>
               <PostInfo post={post} />
@@ -61,4 +53,18 @@ function mapStateToProps({ posts }, props) {
   return { post };
 }
 
-export default withRouter(connect(mapStateToProps)(PagePostDetail));
+function mapDispatchToProps(dispatch, { history }) {
+  return {
+    deletePost: id => {
+      dispatch(handleDeletePost(id));
+      history.push('/');
+    }
+  };
+}
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PagePostDetail)
+);
